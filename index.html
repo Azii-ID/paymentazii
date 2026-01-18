@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metode Pembayaran Toko</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000;
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: #000000;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #6495ED;
+            margin-bottom: 30px;
+        }
+        .payment-method {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #778899;
+            border-radius: 8px;
+            border-left: 5px solid #6495ED;
+        }
+        .payment-method h2 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+        .copy-text {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .copy-text input {
+            flex: 1;
+            padding: 10px;
+            background-color: #333;
+            color: #e0e0e0;
+            border: 1px solid #555;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .copy-btn {
+            padding: 10px 15px;
+            background-color: #6495ED;
+            color: #121212;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .copy-btn:hover {
+            background-color: #9c4dcc;
+        }
+        .qris img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #6495ED;
+            color: #121212;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+        }
+        .download-btn:hover {
+            background-color: #00bfa5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Metode Pembayaran Toko</h1>
+        
+        <div class="payment-method">
+            <h2>Dana</h2>
+            <div class="copy-text">
+                <input type="text" id="dana-id" value="085891281681" readonly>
+                <button class="copy-btn" onclick="copyToClipboard('dana-id')">Salin</button>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <h2>GoPay</h2>
+            <div class="copy-text">
+                <input type="text" id="gopay-id" value="085891281681" readonly>
+                <button class="copy-btn" onclick="copyToClipboard('gopay-id')">Salin</button>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <h2>QRIS</h2>
+            <div class="qris">
+                <img src="qris-code.png" alt="QRIS Code">
+                <button class="download-btn" onclick="downloadQRIS()">Download QRIS</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand('copy');
+            alert('Disalin ke clipboard!');
+        }
+
+        function downloadQRIS() {
+            // Ganti URL dengan path gambar QRIS asli Anda
+            const link = document.createElement('a');
+            link.href = 'https://via.placeholder.com/300x300/333/fff?text=QRIS+Code'; // Placeholder, ganti dengan URL gambar QRIS
+            link.download = 'qris-code.png';
+            link.click();
+        }
+    </script>
+</body>
+</html>
